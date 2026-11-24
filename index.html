@@ -3,13 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sultanat-e-Mughlia | Order + WhatsApp + Easypaisa</title>
+<title>Sultanat-e-Mughlia | FIXED</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
 body{background:#fff7e6;padding-bottom:110px}
-.top{background:#3d0a0a;color:#fff;text-align:center;padding:20px 12px;border-bottom:4px solid #d4af37;position:sticky;top:0;z-index:10}
+.top{background:#3d0a0a;color:#fff;text-align:center;padding:20px 12px;border-bottom:4px solid #d4af37}
 .top h1{color:#d4af37;font-size:32px}
-.top p{font-size:14px}
 .contactRow{display:flex;gap:8px;justify-content:center;margin-top:10px;flex-wrap:wrap}
 .contactRow a,.contactRow button{padding:10px 14px;border-radius:20px;border:none;font-weight:900;cursor:pointer;text-decoration:none;font-size:13px}
 .waBtn{background:#25D366;color:#fff}.easyBtn{background:#fff;color:#000;border:2px solid #d4af37!important}
@@ -18,14 +17,13 @@ body{background:#fff7e6;padding-bottom:110px}
 .step.active{background:#27ae60;color:#fff}.step.done{background:#d4af37;color:#000}
 .helpBox{background:#fff3cd;border:2px dashed #f39c12;margin:0 12px 12px;padding:12px;border-radius:14px;text-align:center;font-size:15px;line-height:1.6}
 .tableGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:0 12px}
-.tBtn{height:72px;border-radius:50%;border:4px solid #ddd;background:#fff;font-size:18px;font-weight:900;cursor:pointer}
-.tBtn.selected{background:#27ae60;color:#fff;border-color:#000;transform:scale(1.1)}
+.tBtn{height:75px;border-radius:50%;border:4px solid #ddd;background:#fff;font-size:20px;font-weight:900;cursor:pointer}
+.tBtn.selected{background:#27ae60!important;color:#fff!important;border-color:#000!important;transform:scale(1.1);box-shadow:0 0 15px #27ae60}
 .catRow{display:flex;gap:8px;overflow-x:auto;padding:12px}
 .catRow button{padding:13px 20px;border-radius:25px;border:2px solid #d4af37;background:#fff;font-weight:900;white-space:nowrap;cursor:pointer;font-size:15px}
 .catRow button.active{background:#3d0a0a;color:#fff}
 .food{background:#fff;border:2px solid #eee;border-radius:18px;margin:0 12px 12px;padding:12px;display:flex;gap:12px;align-items:center}
 .food img{width:80px;height:80px;border-radius:16px;object-fit:cover}
-.food b{font-size:17px}.food span{color:#666;font-size:13px}
 .addBtn{background:#27ae60;color:#fff;border:none;padding:13px 18px;border-radius:25px;font-weight:900;font-size:16px;cursor:pointer;min-width:90px}
 .cartBar{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:3px solid #d4af37;padding:12px;z-index:20}
 .bigBtn{width:100%;padding:16px;border:none;border-radius:14px;font-weight:900;font-size:18px;cursor:pointer;margin-top:8px}
@@ -38,8 +36,7 @@ body{background:#fff7e6;padding-bottom:110px}
 .payBox{background:#f8f8f8;border:2px solid #d4af37;border-radius:14px;padding:12px;margin:12px 0}
 .payOpt{display:flex;gap:8px;margin-top:8px}
 .payOpt button{flex:1;padding:12px;border:2px solid #ddd;background:#fff;border-radius:12px;font-weight:900;cursor:pointer}
-.payOpt button.active{background:#25D366;color:#fff;border-color:#25D366}
-.payOpt button.active.easy{background:#8b0000;color:#fff;border-color:#8b0000}
+.payOpt button.active{background:#25D366;color:#fff}
 .staffOnly{text-align:center;padding:20px;font-size:12px;color:#999}
 .staffOnly button{background:none;border:none;color:#999;text-decoration:underline;cursor:pointer}
 .page{display:none;padding:12px}.page.active{display:block}
@@ -54,10 +51,10 @@ input,select{width:100%;padding:12px;margin:6px 0;border:1px solid #ccc;border-r
 
 <div class="top"><div style="font-size:40px">👑</div><h1>Sultanat-e-Mughlia</h1><p>سلطنت مغلیہ • Shahi Zaiqa • Rawalpindi</p>
 <div class="contactRow">
-<a class="waBtn" href="https://wa.me/923152045030?text=Assalam-o-Alaikum!%20Mujhe%20Sultanat-e-Mughlia%20se%20order%20karna%20hai." target="_blank">💬 WhatsApp: 0315-2045030</a>
-<button class="easyBtn" onclick="copyEasy()">💳 Easypaisa: 0315-2045030 - Copy Karo</button>
+<a class="waBtn" href="https://wa.me/923152045030?text=Assalam-o-Alaikum!%20Mujhe%20order%20karna%20hai." target="_blank">💬 WhatsApp: 0315-2045030</a>
+<button class="easyBtn" onclick="copyEasy()">💳 Easypaisa: 0315-2045030 - Copy</button>
 </div>
-<p style="margin-top:8px;font-size:12px">WhatsApp aur Easypaisa dono par yahi number hai</p>
+<button onclick="hardReset()" style="margin-top:8px;background:none;border:none;color:#ffcccc;font-size:11px;text-decoration:underline;cursor:pointer">Agar kuch na chale to yahan dabao - RESET</button>
 </div>
 
 <div id="page-menu" style="display:block">
@@ -70,7 +67,17 @@ input,select{width:100%;padding:12px;margin:6px 0;border:1px solid #ccc;border-r
 <div class="helpBox" id="guideBox">👋 <b>Assalam-o-Alaikum!</b><br>Pehlay apni <b>Table</b> dabayein 👇<br>Jaise aap <b>T5</b> par bethe hain to <b>T5</b> dabayein.</div>
 
 <div id="step1">
-<div class="tableGrid" id="tableBtns"></div>
+<!-- TABLE BUTTONS - AB HTML MEIN LIKHE HAIN, KABHI GAYAB NAHI HONGE -->
+<div class="tableGrid" id="tableBtns">
+<button class="tBtn" onclick="selectTable('T1',this)">T1<div style="font-size:11px">Khali</div></button>
+<button class="tBtn" onclick="selectTable('T2',this)">T2<div style="font-size:11px">Khali</div></button>
+<button class="tBtn" onclick="selectTable('T3',this)">T3<div style="font-size:11px">Khali</div></button>
+<button class="tBtn" onclick="selectTable('T4',this)">T4<div style="font-size:11px">Khali</div></button>
+<button class="tBtn" onclick="selectTable('T5',this)">T5<div style="font-size:11px">Khali</div></button>
+<button class="tBtn" onclick="selectTable('T6',this)">T6<div style="font-size:11px">Khali</div></button>
+<button class="tBtn" onclick="selectTable('T7',this)">T7<div style="font-size:11px">Khali</div></button>
+<button class="tBtn" onclick="selectTable('T8',this)">T8<div style="font-size:11px">Khali</div></button>
+</div>
 <button class="bigBtn gold" onclick="goStep2()">Aagay Barhein - آگے جائیں ➡️</button>
 </div>
 
@@ -92,12 +99,12 @@ input,select{width:100%;padding:12px;margin:6px 0;border:1px solid #ccc;border-r
 <h2>Shukriya! Order Mil Gaya!</h2>
 <p style="margin:10px 0;line-height:1.6">Apka order <b>Kitchen</b> mein chala gaya hai.<br>Waiter <b id="doneTable"></b> par khana le kar aa raha hai.</p>
 <div style="background:#e8f5e9;padding:14px;border-radius:14px;text-align:left;margin:10px 0">
-<b>💳 Payment - ادائیگی:</b><br>
-• Cash de sakte hain - Table par<br>
-• Easypaisa: <b>0315-2045030</b> - <button onclick="copyEasy()" style="padding:6px 10px;border-radius:10px;border:none;background:#d4af37;font-weight:bold;cursor:pointer">Copy</button><br>
-<span style="font-size:12px">Easypaisa kar ke screenshot WhatsApp par bhej dein.</span>
+<b>💳 Payment:</b><br>
+- Cash de sakte hain - Table par<br>
+- Easypaisa: <b>0315-2045030</b> - <button onclick="copyEasy()" style="padding:6px 10px;border-radius:10px;border:none;background:#d4af37;font-weight:bold;cursor:pointer">Copy</button><br>
+<span style="font-size:12px">Screenshot WhatsApp par bhej dein.</span>
 </div>
-<a href="https://wa.me/923152045030" target="_blank" style="display:block;background:#25D366;color:#fff;padding:14px;border-radius:12px;text-decoration:none;font-weight:900">💬 WhatsApp Par Order / Screenshot Bhejo</a>
+<a href="https://wa.me/923152045030" target="_blank" style="display:block;background:#25D366;color:#fff;padding:14px;border-radius:12px;text-decoration:none;font-weight:900">💬 WhatsApp Par Bhejo</a>
 <button class="bigBtn green" onclick="newOrder()">🔄 Naya Order Karna Hai</button>
 <button class="bigBtn gold" onclick="callWaiter()">🔔 Waiter Ko Bulana Hai</button>
 </div>
@@ -112,11 +119,11 @@ input,select{width:100%;padding:12px;margin:6px 0;border:1px solid #ccc;border-r
 </div>
 
 <div class="modal" id="cartModal"><div class="sheet">
-<h2>🛒 Apka Order - آپکا آرڈر</h2>
+<h2>🛒 Apka Order</h2>
 <div id="cartBox"></div>
 <h3 style="margin:12px 0">Total: Rs <span id="total2">0</span></h3>
 <div class="payBox">
-<b>💳 Payment Ka Tareeqa Chunno - ادائیگی کا طریقہ:</b>
+<b>💳 Payment Ka Tareeqa Chunno:</b>
 <div class="payOpt">
 <button id="payCash" class="active" onclick="setPay('Cash')">💵 Cash<br><span style="font-size:11px">Table par dein</span></button>
 <button id="payEasy" onclick="setPay('Easypaisa')">💳 Easypaisa<br><span style="font-size:11px">0315-2045030</span></button>
@@ -133,7 +140,7 @@ input,select{width:100%;padding:12px;margin:6px 0;border:1px solid #ccc;border-r
 
 <div id="page-staff" class="page">
 <div id="staffLock" class="lock"><h2>🔒 Staff Only</h2><input id="staffPin" type="password" placeholder="Staff PIN"><button class="bigBtn green" onclick="unlock('staff',STAFF_PIN,'staffPin')">UNLOCK STAFF</button><button class="bigBtn dark" onclick="backToMenu()">⬅️ Wapis Menu Par</button></div>
-<div id="staffMain" style="display:none"><h3>👨‍🍳 STAFF - Live Tables</h3><p style="font-size:13px">WhatsApp: 0315-2045030 | Easypaisa: 0315-2045030</p><div id="staffList" style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:12px"></div><button class="bigBtn dark" onclick="logout('staff')">Logout</button></div>
+<div id="staffMain" style="display:none"><h3>👨‍🍳 STAFF - Live Tables</h3><p>WhatsApp / Easypaisa: 0315-2045030</p><div id="staffList" style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:12px"></div><button class="bigBtn dark" onclick="logout('staff')">Logout</button></div>
 </div>
 <div id="page-kitchen" class="page">
 <div id="kitchenLock" class="lock"><h2>🔒 Kitchen Only</h2><input id="kitchenPin" type="password" placeholder="Kitchen PIN"><button class="bigBtn green" onclick="unlock('kitchen',KITCHEN_PIN,'kitchenPin')">UNLOCK KITCHEN</button><button class="bigBtn dark" onclick="backToMenu()">⬅️ Wapis</button></div>
@@ -146,28 +153,34 @@ input,select{width:100%;padding:12px;margin:6px 0;border:1px solid #ccc;border-r
 <div id="staffChoice" class="page" style="text-align:center"><h2>Staff Login - Kaun Ho?</h2><button class="bigBtn green" onclick="openStaffPage('staff')">👨‍🍳 Main Waiter Hun</button><button class="bigBtn red" onclick="openStaffPage('kitchen')">🔥 Main Chef Hun</button><button class="bigBtn gold" onclick="openStaffPage('admin')">⚙️ Main Malik Hun</button><button class="bigBtn dark" onclick="backToMenu()">⬅️ Main Customer Hun - Wapis</button></div>
 
 <script>
+// PURANA KHARAB DATA AUTO DELETE - YAHI ASAL FIX HAI
+try{ if(localStorage.getItem('s_version')!=='v4'){ localStorage.removeItem('s_menu'); localStorage.removeItem('s_orders'); localStorage.removeItem('s_tables'); localStorage.removeItem('s_table'); localStorage.setItem('s_version','v4'); } }catch(e){}
+function hardReset(){ try{localStorage.clear();}catch(e){} location.reload(); }
+
 const STAFF_PIN="@mehtab22338899"; const ADMIN_PIN="@bilal786.08"; const KITCHEN_PIN="@zaiqa786";
 const WA_NUM="03152045030"; const WA_LINK="923152045030";
 let payMethod='Cash';
 let pics={daal:'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=200',murgh:'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=200',karahi:'https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=200',roti:'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=200',drink:'https://images.unsplash.com/photo-1571934811356-5cc061b6821f?w=200'};
-let menu=JSON.parse(localStorage.getItem('s_menu')||'null')||[
+let menu=[
 {id:1,cat:'daal',ur:'دال چنا',en:'Daal Chana',single:150,full:250},{id:2,cat:'daal',ur:'دال ماش',en:'Daal Mash',single:150,full:250},{id:3,cat:'daal',ur:'دال لوبیا',en:'Daal Lobia',single:150,full:250},{id:4,cat:'daal',ur:'دال چاول',en:'Daal Chawal',single:150,full:250},{id:5,cat:'daal',ur:'آلو پالک',en:'Aloo Palak',single:150,full:250},{id:6,cat:'daal',ur:'آلو گوبھی',en:'Aloo Gobi',single:150,full:250},{id:7,cat:'murgh',ur:'چکن قورمہ',en:'Chicken Qorma',single:200,full:350},{id:8,cat:'murgh',ur:'مرغ چنے',en:'Murgh Channay',single:200,full:350},{id:9,cat:'murgh',ur:'چکن پالک',en:'Chicken Palak',single:200,full:350},{id:10,cat:'murgh',ur:'حلیم',en:'Haleem',single:200,full:350},{id:11,cat:'murgh',ur:'چکن حلیم',en:'Chicken Haleem',single:200,full:350},{id:12,cat:'karahi',ur:'چکن کڑاہی',en:'Chicken Karahi',single:1000,full:1800},{id:13,cat:'karahi',ur:'ریڈ کڑاہی',en:'Red Karahi',single:1000,full:1800},{id:14,cat:'karahi',ur:'وائٹ کڑاہی',en:'White Karahi',single:1200,full:2000},{id:15,cat:'karahi',ur:'مٹن کڑاہی',en:'Mutton Karahi',single:2000,full:4000},{id:16,cat:'roti',ur:'روٹی',en:'Roti',single:25,full:25},{id:17,cat:'roti',ur:'نان',en:'Naan',single:30,full:30},{id:18,cat:'drink',ur:'چائے کٹ',en:'Chai Cut',single:50,full:50},{id:19,cat:'drink',ur:'چائے فل',en:'Chai Full',single:70,full:70},{id:20,cat:'drink',ur:'کولڈ ڈرنک 1 لیٹر',en:'Cold Drink 1 Liter',single:170,full:170},{id:21,cat:'drink',ur:'کولڈ ڈرنک 1.5 لیٹر',en:'Cold Drink 1.5 Liter',single:210,full:210},
 ];
+// Menu bhi localStorage se nahi, seedha code se - taake kabhi gayab na ho
+try{ let saved=JSON.parse(localStorage.getItem('s_menu')||'null'); if(saved && saved.length>5) menu=saved; }catch(e){}
 let cart=[]; let selectedTable=''; let current='all';
-let kOrders=JSON.parse(localStorage.getItem('s_orders')||'[]');
-let tables=JSON.parse(localStorage.getItem('s_tables')||'null')||[{id:'T1',status:'empty',order:'Koi Order Nahi',amount:0},{id:'T2',status:'empty',order:'Koi Order Nahi',amount:0},{id:'T3',status:'empty',order:'Koi Order Nahi',amount:0},{id:'T4',status:'empty',order:'Koi Order Nahi',amount:0},{id:'T5',status:'empty',order:'Koi Order Nahi',amount:0},{id:'T6',status:'empty',order:'Koi Order Nahi',amount:0},{id:'T7',status:'empty',order:'Koi Order Nahi',amount:0},{id:'T8',status:'empty',order:'Koi Order Nahi',amount:0}];
-function save(){localStorage.setItem('s_menu',JSON.stringify(menu));localStorage.setItem('s_orders',JSON.stringify(kOrders));localStorage.setItem('s_tables',JSON.stringify(tables));}
-function copyEasy(){navigator.clipboard.writeText(WA_NUM).then(()=>alert('✅ Easypaisa Number Copy Ho Gaya: '+WA_NUM+'\nAb Easypaisa App mein paste kar do.')).catch(()=>alert('Easypaisa Number: '+WA_NUM));}
-function setPay(m){payMethod=m;document.getElementById('payCash').classList.toggle('active',m=='Cash');document.getElementById('payEasy').classList.toggle('active',m=='Easypaisa');document.getElementById('payEasy').classList.toggle('easy',m=='Easypaisa');document.getElementById('easyInfo').style.display=m=='Easypaisa'?'block':'none';let total=cart.reduce((a,b)=>a+b.price*b.qty,0);document.getElementById('easyAmount').innerText=total;}
-function renderTables(){document.getElementById('tableBtns').innerHTML=tables.map(t=>`<button class="tBtn ${selectedTable===t.id?'selected':''}" onclick="selectTable('${t.id}')">${t.id}<div style="font-size:11px">${t.status=='empty'?'Khali':'Busy'}</div></button>`).join('');}
-function selectTable(id){selectedTable=id;renderTables();document.getElementById('guideBox').innerHTML=`✅ <b>Shabash! Table ${id} Select Ho Gayi.</b><br>Ab neeche <b>Aagay Barhein</b> dabao.`;}
-function goStep2(){if(!selectedTable){alert('Pehle Table Dabao! Upar se koi ek table, jaise T5.');return;}document.getElementById('step1').style.display='none';document.getElementById('step2').style.display='block';document.getElementById('s1').classList.add('done');document.getElementById('s2').classList.add('active');document.getElementById('guideBox').innerHTML=`👍 <b>Table ${selectedTable} - Ab Khana Chunno.</b><br>Jo pasand hai us par <b>ADD +</b> dabao.`;renderMenu();}
-function goStep1(){document.getElementById('step1').style.display='block';document.getElementById('step2').style.display='none';}
-function filterMenu(c,btn){current=c;document.querySelectorAll('.catRow button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');renderMenu();}
-function renderMenu(){let html='';menu.filter(i=>current=='all'||i.cat==current).forEach(i=>{html+=`<div class="food"><img src="${pics[i.cat]}"><div style="flex:1"><b>${i.ur} (${i.en})</b><br><span>⭐ 4.8 • Single Rs ${i.single} | Full Rs ${i.full}</span><br><span style="color:#8b0000;font-weight:900">Rs ${i.single} se shuru</span></div><button class="addBtn" onclick="addCart(${i.id},${i.single},'Single')">ADD +<br><span style="font-size:11px">Single Rs ${i.single}</span></button></div>`});document.getElementById('menuList').innerHTML=html;}
-function addCart(id,price,size){let it=menu.find(x=>x.id==id);let ex=cart.find(c=>c.id==id&&c.size==size);if(ex)ex.qty++;else cart.push({id,name:it.en,ur:it.ur,price,size,qty:1});updateCartBar();document.getElementById('guideBox').innerHTML=`✅ <b>${it.ur} Add Ho Gaya!</b><br>Neeche <b>CART DEKHEIN</b> dabao.`;}
-function updateCartBar(){let total=cart.reduce((a,b)=>a+b.price*b.qty,0);let count=cart.reduce((a,b)=>a+b.qty,0);document.getElementById('total').innerText=total;document.getElementById('cartCount').innerText=count;document.getElementById('cartTable').innerText=selectedTable||'-';document.getElementById('cartBar').style.display=cart.length?'block':'none';}
-function openCart(){let total=cart.reduce((a,b)=>a+b.price*b.qty,0);document.getElementById('total2').innerText=total;document.getElementById('easyAmount').innerText=total;document.getElementById('cartBox').innerHTML=cart.length?cart.map((c,i)=>`<div class="cartRow"><span><b>${c.ur} (${c.name})</b><br>${c.size} - Rs ${c.price}</span><span><button class="qBtn" onclick="changeQty(${i},-1)">-</button> ${c.qty} <button class="qBtn" onclick="changeQty(${i},1)">+</button></span></div>`).join(''):'<p>Cart khali hai.</p>';document.getElementById('cartModal').classList.add('open');}
-function closeCart(){document.getElementById('cartModal').classList.remove('open');}
-function changeQty(i,d){cart[i].qty+=d;if(cart[i].qty<=0)cart.splice(i,1);updateCartBar();openCart();if(!cart.length)closeCart();}
-function placeOrder(){if(!cart.length){alert('Cart khali hai! Pehle ADD + dabao.');return;}let total=cart.reduce((a,b)=>a+b.price*b.qty,0);let itemsText=cart.map(c=>c.name+' '+c.size+' x'+c.qty+' = Rs '+(c.price*c.qty)).join('%0A');let msg=`Assalam-o-Alaikum! Sultanat-e-Mughlia - NAYA ORDER%0A%0ATable: ${selectedTable}%0A${itemsText}%0A%0ATotal: Rs ${total}%0APayment: ${payMethod} ${payMethod=='Easypaisa'?'(Easypaisa 0315-2045030)':''}%0A%0AKripya Confirm Karein.`;kOrders.unshift({id:Date.now(),table:selectedTable,items:cart.map(c=>c.name+' '+c.size+' x'+c.qty),total,pay:payMethod,status:'new'});let tb=tables.find(x=>x.id==selectedTable);tb.status='eating';tb.order=cart.map(c=>c.name).join(', ');tb.amount=total;save();cart=[];updateCartBar();closeCart();document.getElementById('step1').style.display='none';document.getElementById('step2').style.display='none';document.getElementById('step3').style.display='block';document.getElementById('s2').classList.add('done');document.getElementById('s3').classList.add('active');document.getElementById('doneTable').innerText=selectedTable;document.getElementById('guideBox').innerHTML=`🎉 <b>Ho Gaya! Order Kitchen + WhatsApp Mein C
+let kOrders=[]; try{ kOrders=JSON.parse(localStorage.getItem('s_orders')||'[]'); }catch(e){ kOrders=[]; }
+let tables=[{id:'T1',status:'empty',order:'Koi Order Nahi',amount:0},{id:'T2',status:'empty',order:'Koi Order Nahi',amount:0},{id:'T3',status:'empty',order:'Koi Order Nahi',amount:0},{id:'T4',status:'empty',order:'Koi Order Nahi',amount:0},{id:'T5',status:'empty',order:'Koi Order Nahi',amount:0},{id:'T6',status:'empty',order:'Koi Order Nahi',amount:0},{id:'T7',status:'empty',order:'Koi Order Nahi',amount:0},{id:'T8',status:'empty',order:'Koi Order Nahi',amount:0}];
+try{ let st=JSON.parse(localStorage.getItem('s_tables')||'null'); if(st && st.length===8) tables=st; }catch(e){}
+function save(){ try{localStorage.setItem('s_menu',JSON.stringify(menu));localStorage.setItem('s_orders',JSON.stringify(kOrders));localStorage.setItem('s_tables',JSON.stringify(tables));}catch(e){} }
+function copyEasy(){ if(navigator.clipboard){ navigator.clipboard.writeText(WA_NUM).then(()=>alert('✅ Copy Ho Gaya: '+WA_NUM)).catch(()=>alert('Easypaisa Number: '+WA_NUM)); } else alert('Easypaisa Number: '+WA_NUM); }
+function setPay(m){ payMethod=m; document.getElementById('payCash').classList.toggle('active',m=='Cash'); document.getElementById('payEasy').classList.toggle('active',m=='Easypaisa'); document.getElementById('easyInfo').style.display=m=='Easypaisa'?'block':'none'; let total=cart.reduce((a,b)=>a+b.price*b.qty,0); document.getElementById('easyAmount').innerText=total; }
+function selectTable(id,btn){ selectedTable=id; document.querySelectorAll('.tBtn').forEach(b=>b.classList.remove('selected')); if(btn) btn.classList.add('selected'); document.getElementById('guideBox').innerHTML='✅ <b>Shabash! Table '+id+' Select Ho Gayi.</b><br>Ab neeche <b>Aagay Barhein</b> dabao.'; }
+function goStep2(){ if(!selectedTable){ alert('Pehle Table Dabao! Upar se koi ek table, jaise T5.'); return; } document.getElementById('step1').style.display='none'; document.getElementById('step2').style.display='block'; document.getElementById('s1').classList.add('done'); document.getElementById('s2').classList.add('active'); document.getElementById('guideBox').innerHTML='👍 <b>Table '+selectedTable+' - Ab Khana Chunno.</b><br>Jo pasand hai us par <b>ADD +</b> dabao.'; renderMenu(); }
+function goStep1(){ document.getElementById('step1').style.display='block'; document.getElementById('step2').style.display='none'; }
+function filterMenu(c,btn){ current=c; document.querySelectorAll('.catRow button').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); renderMenu(); }
+function renderMenu(){ let html=''; menu.filter(i=>current=='all'||i.cat==current).forEach(i=>{ html+=`<div class="food"><img src="${pics[i.cat]}"><div style="flex:1"><b>${i.ur} (${i.en})</b><br><span>⭐ 4.8 • Single Rs ${i.single} | Full Rs ${i.full}</span><br><span style="color:#8b0000;font-weight:900">Rs ${i.single} se shuru</span></div><button class="addBtn" onclick="addCart(${i.id},${i.single},'Single')">ADD +<br><span style="font-size:11px">Single Rs ${i.single}</span></button></div>` }); document.getElementById('menuList').innerHTML=html; }
+function addCart(id,price,size){ let it=menu.find(x=>x.id==id); let ex=cart.find(c=>c.id==id&&c.size==size); if(ex)ex.qty++; else cart.push({id,name:it.en,ur:it.ur,price,size,qty:1}); updateCartBar(); document.getElementById('guideBox').innerHTML='✅ <b>'+it.ur+' Add Ho Gaya!</b><br>Neeche <b>CART DEKHEIN</b> dabao.'; }
+function updateCartBar(){ let total=cart.reduce((a,b)=>a+b.price*b.qty,0); let count=cart.reduce((a,b)=>a+b.qty,0); document.getElementById('total').innerText=total; document.getElementById('cartCount').innerText=count; document.getElementById('cartTable').innerText=selectedTable||'-'; document.getElementById('cartBar').style.display=cart.length?'block':'none'; }
+function openCart(){ let total=cart.reduce((a,b)=>a+b.price*b.qty,0); document.getElementById('total2').innerText=total; document.getElementById('easyAmount').innerText=total; document.getElementById('cartBox').innerHTML=cart.length?cart.map((c,i)=>`<div class="cartRow"><span><b>${c.ur} (${c.name})</b><br>${c.size} - Rs ${c.price}</span><span><button class="qBtn" onclick="changeQty(${i},-1)">-</button> ${c.qty} <button class="qBtn" onclick="changeQty(${i},1)">+</button></span></div>`).join(''):'<p>Cart khali hai.</p>'; document.getElementById('cartModal').classList.add('open'); }
+function closeCart(){ document.getElementById('cartModal').classList.remove('open'); }
+function changeQty(i,d){ cart[i].qty+=d; if(cart[i].qty<=0)cart.splice(i,1); updateCartBar(); openCart(); if(!cart.length)closeCart(); }
+function pla
