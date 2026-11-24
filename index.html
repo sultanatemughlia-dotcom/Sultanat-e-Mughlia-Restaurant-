@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sultanat-e-Mughlia | سلطنت مغلیہ - Royal 3D Experience</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Arial,sans-serif}
+body{background:#1a0505;color:#fff;overflow-x:hidden;padding-bottom:80px}
+@keyframes float{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-15px) rotate(2deg)}}
+@keyframes shine{0%{background-position:-200% center}100%{background-position:200% center}}
+@keyframes spin3d{0%{transform:rotateY(0deg)}100%{transform:rotateY(360deg)}}
+@keyframes pop{0%{transform:scale(0.8);opacity:0}100%{transform:scale(1);opacity:1}}
+@keyframes glow{0%,100%{box-shadow:0 0 20px #d4af37}50%{box-shadow:0 0 40px #ffdf6b}}
+.hero{background:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.7)),url('https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=800&q=80');background-size:cover;background-position:center;padding:35px 15px 50px;text-align:center;border-bottom:3px solid #d4af37;position:relative;overflow:hidden}
+.hero h1{font-size:38px;background:linear-gradient(90deg,#fff,#d4af37,#fff,#d4af37);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:shine 3s linear infinite;font-weight:900}
+.hero p{color:#ffe9a8;margin-top:6px}
+.crown{font-size:55px;animation:float 3s ease-in-out infinite;display:inline-block}
+.badges{display:flex;gap:8px;justify-content:center;margin-top:14px;flex-wrap:wrap}
+.badges span{background:rgba(255,255,255,0.15);backdrop-filter:blur(10px);border:1px solid #d4af37;padding:8px 14px;border-radius:20px;font-size:12px}
+.gallery{display:flex;gap:12px;overflow-x:auto;padding:15px;scroll-snap-type:x mandatory}
+.dish3d{min-width:170px;height:190px;border-radius:20px;position:relative;overflow:hidden;scroll-snap-align:center;transform-style:preserve-3d;transition:0.4s;cursor:pointer;animation:pop 0.6s}
+.dish3d:hover{transform:rotateY(10deg) scale(1.05)}
+.dish3d img{width:100%;height:100%;object-fit:cover}
+.dish3d div{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,0.9));padding:30px 10px 10px;text-align:center}
+.dish3d b{color:#d4af37}
+.dish3d span{font-size:12px;color:#fff}
+.section{padding:0 15px}
+.tabs{display:flex;gap:8px;overflow-x:auto;margin:10px 0}
+.tabs button{background:#2a0a0a;color:#fff;border:1px solid #d4af37;padding:11px 18px;border-radius:25px;white-space:nowrap;cursor:pointer}
+.tabs button.active{background:#d4af37;color:#000;font-weight:bold;box-shadow:0 5px 15px #d4af37}
+.card{background:linear-gradient(145deg,#fff,#fff2cc);color:#000;border-radius:20px;padding:14px;margin-bottom:12px;display:flex;gap:12px;align-items:center;transform-style:preserve-3d;transition:0.3s;animation:pop 0.5s;box-shadow:0 10px 20px rgba(0,0,0,0.4)}
+.card:hover{transform:translateY(-4px) rotateX(3deg)}
+.card img{width:72px;height:72px;border-radius:50%;object-fit:cover;border:3px solid #d4af37;animation:float 4s infinite}
+.card b{font-size:16px}
+.card span{color:#666;font-size:12px}
+.price{color:#8b0000;font-weight:900;font-size:18px}
+.btn{background:linear-gradient(45deg,#8b0000,#c0392b);color:#fff;border:none;padding:9px 14px;border-radius:20px;cursor:pointer;margin-top:6px;font-weight:bold;box-shadow:0 4px 10px rgba(0,0,0,0.3)}
+.btn:active{transform:scale(0.92)}
+.cartBox{background:#fff;color:#000;border-radius:18px;padding:16px;margin-top:15px;border:2px solid #d4af37;animation:glow 2s infinite}
+.nav{position:fixed;bottom:0;left:0;right:0;background:rgba(20,2,2,0.95);backdrop-filter:blur(10px);display:flex;z-index:99;border-top:2px solid #d4af37}
+.nav button{flex:1;padding:12px 2px;background:none;border:none;color:#fff;font-weight:bold;cursor:pointer;font-size:12px}
+.nav button.active{background:#d4af37;color:#000}
+.page{display:none}.page.active{display:block}
+.korder{background:#fff;color:#000;border-radius:16px;padding:14px;margin-bottom:12px;border:4px solid #e74c3c;animation:pop 0.5s}
+.korder.cooking{border-color:#f39c12}.korder.ready{border-color:#27ae60}
+.status-big{font-size:19px;font-weight:900;text-align:center;padding:12px;border-radius:10px;color:#fff;margin:10px 0}
+.new .status-big{background:#e74c3c}.cooking .status-big{background:#f39c12}.ready .status-big{background:#27ae60}
+.table{background:#fff;color:#000;border-radius:16px;padding:14px;text-align:center;border:4px solid #ddd;margin-bottom:12px}
+.table.empty{border-color:#27ae60}.table.eating{border-color:#f39c12}.table.bill{border-color:#e74c3c}.table.help{border-color:#8e44ad}
+.tstatus{font-size:17px;font-weight:900;padding:10px;border-radius:10px;color:#fff;margin:8px 0}
+.empty .tstatus{background:#27ae60}.eating .tstatus{background:#f39c12}.bill .tstatus{background:#e74c3c}.help .tstatus{background:#8e44ad}
+input,select{width:100%;padding:12px;margin:6px 0;border:1px solid #ccc;border-radius:12px}
+.btn2{width:100%;padding:12px;border:none;border-radius:12px;font-weight:bold;cursor:pointer;margin-top:8px;background:#27ae60;color:#fff}
+</style>
+</head>
+<body>
+
+<div class="header hero">
+<div class="crown">👑</div>
+<h1>Sultanat-e-Mughlia</h1>
+<p>سلطنت مغلیہ • Shahi Zaiqa • Since 1995</p>
+<p style="font-size:13px;margin-top:8px">⭐ 4.9 | 2,500+ Khush Customers | 📍 Rawalpindi</p>
+<div class="badges"><span>🔥 Live Kitchen</span><span>🚀 15 Min Delivery</span><span>💰 Cash / JazzCash</span></div>
+</div>
+
+<div id="page-menu" class="page active">
+<div class="gallery">
+<div class="dish3d"><img src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=400"><div><b>Chicken Karahi</b><br><span>Rs 1000 - 1800 • ⭐ 4.9</span></div></div>
+<div class="dish3d"><img src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=400"><div><b>Mutton Karahi</b><br><span>Rs 2000 - 4000 • 👑 Royal</span></div></div>
+<div class="dish3d"><img src="https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=400"><div><b>Chicken Qorma</b><br><span>Rs 200 - 350 • 🔥 Best Seller</span></div></div>
+<div class="dish3d"><img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=400"><div><b>Haleem</b><br><span>Rs 200 - 350 • ❤️ Special</span></div></div>
+<div class="dish3d"><img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?w=400"><div><b>Naan + Chai</b><br><span>Rs 30 + 50 • ☕ Shahi Chai</span></div></div>
+</div>
+
+<div class="section">
+<div class="tabs">
+<button class="active" onclick="filterMenu('all',this)">All / سب</button>
+<button onclick="filterMenu('daal',this)">Daal</button>
+<button onclick="filterMenu('murgh',this)">Murgh</button>
+<button onclick="filterMenu('karahi',this)">Karahi</button>
+<button onclick="filterMenu('roti',this)">Roti</button>
+<button onclick="filterMenu('drink',this)">Drinks</button>
+</div>
+<div id="menuList"></div>
+<div class="cartBox"><b>🛒 Cart - Total: Rs <span id="total">0</span></b><br><button class="btn" onclick="showCart()">Cart Dekhen / Order Confirm Karen</button><div id="cartBox"></div></div>
+</div>
+</div>
+
+<div id="page-kitchen" class="page"><div class="section"><h3 style="margin:12px 0">🔥 KITCHEN - کچن</h3><button class="btn" onclick="addDemoKitchen()">+ Demo Order</button><div id="kitchenList" style="margin-top:10px"></div></div></div>
+<div id="page-staff" class="page"><div class="section"><h3 style="margin:12px 0">👨‍🍳 STAFF - Live Floor</h3><div id="staffList"></div></div></div>
+<div id="page-admin" class="page"><div class="section"><div class="card"><b>Aaj Ki Sale: Rs <span id="todaySale">4320</span></b><br><span>Total Dishes: <span id="totalItems">21</span></span></div><div class="card"><div style="width:100%"><h3>➕ Naya Dish</h3><input id="newUr" placeholder="Urdu Naam"><input id="newEn" placeholder="English Naam"><select id="newCat"><option value="daal">Daal</option><option value="murgh">Murgh</option><option value="karahi">Karahi</option><option value="roti">Roti</option><option value="drink">Drinks</option></select><input id="newSingle" type="number" placeholder="Single Price"><input id="newFull" type="number" placeholder="Full Price"><button class="btn2" onclick="addDish()">ADD DISH</button></div></div><div class="card"><div style="width:100%"><h3>📋 Price Change</h3><div id="adminList"></div><button class="btn2" style="background:#d4af37;color:#000" onclick="saveAll()">SAVE ALL PRICES</button></div></div></div></div>
+
+<div class="nav">
+<button class="active" onclick="showPage('menu',this)">🍽️ MENU<br>مینیو</button>
+<button onclick="showPage('kitchen',this)">🔥 KITCHEN<br>کچن</button>
+<button onclick="showPage('staff',this)">👨‍🍳 STAFF<br>اسٹاف</button>
+<button onclick="showPage('admin',this)">⚙️ ADMIN<br>ایڈمن</button>
+</div>
+
+<script>
+let pics={daal:'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=200',murgh:'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=200',karahi:'https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=200',roti:'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=200',drink:'https://images.unsplash.com/photo-1571934811356-5cc061b6821f?w=200'};
+let menu=[
+{id:1,cat:'daal',ur:'دال چنا',en:'Daal Chana',single:150,full:250},{id:2,cat:'daal',ur:'دال ماش',en:'Daal Mash',single:150,full:250},{id:3,cat:'daal',ur:'دال لوبیا',en:'Daal Lobia',single:150,full:250},{id:4,cat:'daal',ur:'دال چاول',en:'Daal Chawal',single:150,full:250},{id:5,cat:'daal',ur:'آلو پالک',en:'Aloo Palak',single:150,full:250},{id:6,cat:'daal',ur:'آلو گوبھی',en:'Aloo Gobi',single:150,full:250},{id:7,cat:'murgh',ur:'چکن قورمہ',en:'Chicken Qorma',single:200,full:350},{id:8,cat:'murgh',ur:'مرغ چنے',en:'Murgh Channay',single:200,full:350},{id:9,cat:'murgh',ur:'چکن پالک',en:'Chicken Palak',single:200,full:350},{id:10,cat:'murgh',ur:'حلیم',en:'Haleem',single:200,full:350},{id:11,cat:'murgh',ur:'چکن حلیم',en:'Chicken Haleem',single:200,full:350},{id:12,cat:'karahi',ur:'چکن کڑاہی',en:'Chicken Karahi',single:1000,full:1800},{id:13,cat:'karahi',ur:'ریڈ کڑاہی',en:'Red Karahi',single:1000,full:1800},{id:14,cat:'karahi',ur:'وائٹ کڑاہی',en:'White Karahi',single:1200,full:2000},{id:15,cat:'karahi',ur:'مٹن کڑاہی',en:'Mutton Karahi',single:2000,full:4000},{id:16,cat:'roti',ur:'روٹی',en:'Roti',single:25,full:25},{id:17,cat:'roti',ur:'نان',en:'Naan',single:30,full:30},{id:18,cat:'drink',ur:'چائے کٹ',en:'Chai Cut',single:50,full:50},{id:19,cat:'drink',ur:'چائے فل',en:'Chai Full',single:70,full:70},{id:20,cat:'drink',ur:'کولڈ ڈرنک 1 لیٹر',en:'Cold Drink 1 Liter',single:170,full:170},{id:21,cat:'drink',ur:'کولڈ ڈرنک 1.5 لیٹر',en:'Cold Drink 1.5 Liter',single:210,full:210},
+];
+let cart=[],current='all';
+let kOrders=[{id:101,table:'T5',items:['Chicken Karahi Full x1','Naan x4'],status:'new'},{id:102,table:'T2',items:['Daal Chana Single x2','Roti x4'],status:'cooking'},{id:103,table:'T8',items:['Mutton Karahi Single x1'],status:'ready'}];
+let tables=[{id:'T1',status:'eating',order:'Chicken Karahi',amount:1800},{id:'T2',status:'empty',order:'Koi Order Nahi',amount:0},{id:'T3',status:'bill',order:'Daal Chana + Roti',amount:650},{id:'T4',status:'eating',order:'Mutton Karahi',amount:4000},{id:'T5',status:'help',order:'Haleem Full',amount:350},{id:'T6',status:'empty',order:'Koi Order Nahi',amount:0},{id:'T7',status:'eating',order:'White Karahi',amount:2000},{id:'T8',status:'bill',order:'Qorma + Naan',amount:850}];
+function showPage(p,btn){document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));document.getElementById('page-'+p).classList.add('active');document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');renderAll();}
+function filterMenu(c,btn){current=c;document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');renderMenu();}
+function renderMenu(){let html='';menu.filter(i=>current=='all'||i.cat==current).forEach(i=>{html+=`<div class="card"><img src="${pics[i.cat]}"><div style="flex:1"><b>${i.ur} (${i.en})</b><br><span>⭐ 4.8 • Single Rs ${i.single} | Full Rs ${i.full}</span><br><button class="btn" onclick="addCart(${i.id},${i.single},'Single')">+ Single</button> <button class="btn" onclick="addCart(${i.id},${i.full},'Full')">+ Full</button></div><div class="price">Rs ${i.single}</div></div>`});document.getElementById('menuList').innerHTML=html;}
+function addCart(id,price,size){let it=menu.find(x=>x.id==id);cart.push({name:it.en,price,size});document.getElementById('total').innerText=cart.reduce((a,b)=>a+b.price,0);}
+function showCart(){let t=cart.reduce((a,b)=>a+b.price,0);let h='<h3>Apka Order</h3>';cart.forEach(c=>h+=`<p>${c.name} (${c.size}) - Rs ${c.price}</p>`);h+=`<h3>Total: Rs ${t}</h3><button class="btn" onclick="placeOrder()">Order Confirm - Kitchen Ko Bhejo</button>`;document.getElementById('cartBox').innerHTML=h;}
+function placeOrder(){alert('Shukriya! Order Kitchen mein chala gaya!');kOrders.unshift({id:Math.floor(Math.random()*900+100),table:'T5',items:cart.map(c=>c.name+' '+c.size),status:'new'});cart=[];document.getElementById('total').innerText=0;document.getElementById('cartBox').innerHTML='';renderAll();}
+function renderKitchen(){document.getElementById('kitchenList').innerHTML=kOrders.map(o=>{let st='',ur='',btn='';if(o.status=='new'){st='🔴 NEW ORDER - NAYA ORDER';ur='نیا آرڈر آیا ہے';btn=`<button class="btn2" style="background:#f39c12" onclick="kChange(${o.id},'cooking')">🔥 COOKING SHURU KAREN</button>`}if(o.status=='cooking'){st='🟡 COOKING - PAK RAHA HAI';ur='پک رہا ہے';btn=`<button class="btn2" onclick="kChange(${o.id},'ready')">✅ READY HAI</button>`}if(o.status=='ready'){st='🟢 READY - TAYAR HAI';ur='تیار ہے';btn=`<button class="btn2" style="background:#333" onclick="kRemove(${o.id})">✔️ SERVED - KHATAM</button>`}return `<div class="korder ${o.status}"><h3>Order #${o.id} - Table ${o.table}</h3><div class="status-big">${st}<br><span style="font-size:14px">${ur}</span></div><p>${o.items.join('<br>')}</p>${btn}</div>`}).join('');}
+function kChange(id,s){kOrders.find(x=>x.id==id).status=s;renderKitchen();}
+function kRemove(id){kOrders=kOrders.filter(x=>x.id!=id);renderKitchen();}
+function addDemoKitchen(){kOrders.unshift({id:Math.floor(Math.random()*900+100),table:'T'+Math.floor(Math.random()*10+1),items:['Chicken Qorma Full x1','Naan x2'],status:'new'});renderKitchen();}
+function renderStaff(){document.getElementById('staffList').innerHTML=tables.map(t=>{let txt='',ur='';if(t.status=='empty'){txt='KHALI HAI';ur='خالی ہے'}if(t.status=='eating'){txt='KHAA RAHE HAIN';ur='کھا رہے ہیں'}if(t.status=='bill'){txt='BILL CHAHIYE';ur='بل چاہیے'}if(t.status=='help'){txt='WAITER BULAYA';ur='ویٹر بلایا ہے'}let btn=t.status=='help'?`<button class="btn2" style="background:#8e44ad" onclick="staffAttend('${t.id}')">Ja Raha Hun</button>`:t.status=='bill'?`<button class="btn2" style="background:#e74c3c" onclick="staffBill('${t.id}')">Bill De Diya</button>`:`<button class="btn2" style="background:#3d0a0a" onclick="alert('${t.id} ka order')">Order Dekhen</button>`;return `<div class="table ${t.status}"><h2>Table ${t.id}</h2><div class="tstatus">${txt}<br>${ur}</div><p>${t.order} - Rs ${t.amount}</p>${btn}</div>`}).join('');}
+function staffAttend(id){tables.find(x=>x.id==id).status='eating';renderStaff();}
+function staffBill(id){let t=tables.find(x=>x.id==id);t.status='empty';t.order='Koi Order Nahi';t.amount=0;renderStaff();}
+function renderAdmin(){document.getElementById('adminList').innerHTML=menu.map(m=>`<div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #eee"><div><b>${m.ur} (${m.en})</b><br>Single: <input style="width:70px;padding:6px" id="s${m.id}" value="${m.single}" type="number"> Full: <input style="width:70px;padding:6px" id="f${m.id}" value="${m.full}" type="number"></div><button style="background:#e74c3c;color:#fff;border:none;padding:8px;border-radius:8px" onclick="delDish(${m.id})">Delete</button></div>`).join('');document.getElementById('totalItems').innerText=menu.length;}
+function addDish(){let ur=document.getElementById('newUr').value,en=document.getElementById('newEn').value,cat=document.getElementById('newCat').value,s=document.getElementById('newSingle').value,f=document.getElementById('newFull').value;if(!ur||!en||!s){alert('Naam aur Price zaroori hai');return;}menu.push({id:Date.now(),cat,ur,en,single:parseInt(s),full:parseInt(f||s)});renderAll();alert('Dish Add Ho Gaya!');}
+function delDish(id){menu=menu.filter(m=>m.id!=id);renderAll();}
+function saveAll(){menu.forEach(m=>{m.single=parseInt(document.getElementById('s'+m.id).value);m.full=parseInt(document.getElementById('f'+m.id).value)});renderAll();alert('Prices Save Ho Gayi!');}
+function renderAll(){renderMenu();renderKitchen();renderStaff();renderAdmin();}
+renderAll();
+</script>
+</body>
+</html>
