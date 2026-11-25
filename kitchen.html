@@ -6,24 +6,17 @@
 <body>
 <h1>🔥 KITCHEN - Sultanat-e-Mughlia</h1>
 <div class="links"><a href="index.html">🍽️ MENU</a><a href="kitchen.html">🔥 KITCHEN</a><a href="staff.html">👨‍🍳 STAFF</a><a href="admin.html">⚙️ ADMIN</a></div>
-<div id="lock" class="lock"><h2>🔒 Kitchen Lock Hai</h2><p>Chef PIN dalo</p><input id="pin" type="password" placeholder="PIN - @zaiqa786"><button class="btn green" onclick="unlock()">UNLOCK KITCHEN</button></div>
+<div id="lock" class="lock"><h2>🔒 Kitchen Lock Hai</h2><p>Chef PIN dalo</p><input id="pin" type="password" placeholder="PIN dalo"><button class="btn green" onclick="unlock()">UNLOCK KITCHEN</button><p id="err" style="color:red;font-weight:900;display:none;margin-top:8px">❌ Incorrect PIN - Dobara Try Karo</p></div>
 <div id="main" style="display:none"><div style="text-align:center;padding:10px"><button class="btn gold" onclick="loadOrders()">🔄 Refresh - Naye Order Dekho</button></div><div id="list"></div><button class="btn dark" onclick="logout()">Logout</button></div>
 <script>
-function unlock(){ if(document.getElementById('pin').value.trim()==="@zaiqa786"){ document.getElementById('lock').style.display='none'; document.getElementById('main').style.display='block'; loadOrders(); } else alert('Ghalat PIN!'); }
+function unlock(){ if(document.getElementById('pin').value.trim()==="@zaiqa786"){ document.getElementById('lock').style.display='none'; document.getElementById('main').style.display='block'; loadOrders(); } else { document.getElementById('err').style.display='block'; alert('❌ Incorrect PIN'); } }
 function logout(){ document.getElementById('lock').style.display='block'; document.getElementById('main').style.display='none'; }
 function getOrders(){ try{ return JSON.parse(localStorage.getItem('s_orders')||'[]'); }catch(e){ return []; } }
 function saveOrders(o){ localStorage.setItem('s_orders',JSON.stringify(o)); }
-function loadOrders(){
-  var orders=getOrders();
-  if(!orders.length){ document.getElementById('list').innerHTML='<p style="text-align:center;padding:20px">Koi order nahi. Customer jab order karega tab yahan ayega.</p>'; return; }
-  var h='';
-  for(var i=0;i<orders.length;i++){ var o=orders[i]; var st=o.status==='new'?'🔴 NEW ORDER - NAYA':o.status==='cooking'?'🟡 COOKING - PAK RAHA':'🟢 READY - TAYAR'; var btn=o.status==='new'?'<button class="btn gold" onclick="changeStatus('+o.id+',\'cooking\')">🔥 COOKING SHURU</button>':o.status==='cooking'?'<button class="btn green" onclick="changeStatus('+o.id+',\'ready\')">✅ READY HAI</button>':'<button class="btn dark" onclick="removeOrder('+o.id+')">✔️ SERVED - KHATAM</button>';
-  h+='<div class="order"><h3>Table '+o.table+' - Rs '+o.total+' - '+o.pay+'</h3><div style="font-weight:900;margin:8px 0">'+st+'</div><p>'+o.items.join('<br>')+'</p>'+btn+'</div>'; }
-  document.getElementById('list').innerHTML=h;
-}
+function loadOrders(){ var orders=getOrders(); if(!orders.length){ document.getElementById('list').innerHTML='<p style="text-align:center;padding:20px">Koi order nahi.</p>'; return; } var h=''; for(var i=0;i<orders.length;i++){ var o=orders[i]; var st=o.status==='new'?'🔴 NEW ORDER - NAYA':o.status==='cooking'?'🟡 COOKING - PAK RAHA':'🟢 READY - TAYAR'; var btn=o.status==='new'?'<button class="btn gold" onclick="changeStatus('+o.id+',\'cooking\')">🔥 COOKING SHURU</button>':o.status==='cooking'?'<button class="btn green" onclick="changeStatus('+o.id+',\'ready\')">✅ READY HAI</button>':'<button class="btn dark" onclick="removeOrder('+o.id+')">✔️ SERVED - KHATAM</button>'; h+='<div class="order"><h3>Table '+o.table+' - Rs '+o.total+' - '+o.pay+'</h3><div style="font-weight:900;margin:8px 0">'+st+'</div><p>'+o.items.join('<br>')+'</p>'+btn+'</div>'; } document.getElementById('list').innerHTML=h; }
 function changeStatus(id,s){ var o=getOrders(); for(var i=0;i<o.length;i++) if(o[i].id===id) o[i].status=s; saveOrders(o); loadOrders(); }
 function removeOrder(id){ var o=getOrders().filter(function(x){return x.id!==id}); saveOrders(o); loadOrders(); }
 setInterval(function(){ if(document.getElementById('main').style.display==='block') loadOrders(); },5000);
 </script>
 </body>
-  </html>
+</html>
