@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Admin - Sultanat-e-Mughlia</title>
+<style>*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}body{background:#fff7e6;padding:12px}h1{text-align:center;background:#3d0a0a;color:#d4af37;padding:16px}.links{text-align:center;background:#140202;padding:10px}.links a{color:#fff;text-decoration:none;font-weight:900;margin:0 8px}.lock{background:#fff;padding:20px;border-radius:14px;text-align:center;margin:12px}.lock input{width:100%;padding:14px;margin:10px 0;border:2px solid #333;border-radius:12px;text-align:center;font-size:18px}.btn{width:100%;padding:14px;border:none;border-radius:12px;font-weight:900;margin-top:8px}.green{background:#27ae60;color:#fff}.gold{background:#d4af37}.dark{background:#333;color:#fff}.card{background:#fff;padding:14px;border-radius:12px;margin:12px 0}input,select{width:100%;padding:12px;margin:6px 0;border:1px solid #ccc;border-radius:10px}</style>
+</head>
+<body>
+<h1>⚙️ ADMIN - Malik - Sultanat-e-Mughlia</h1>
+<div class="links"><a href="index.html">🍽️ MENU</a><a href="kitchen.html">🔥 KITCHEN</a><a href="staff.html">👨‍🍳 STAFF</a><a href="admin.html">⚙️ ADMIN</a></div>
+<div id="lock" class="lock"><h2>🔒 Admin Lock Hai</h2><p>Malik PIN dalo</p><input id="pin" type="password" placeholder="PIN - @bilal786.08"><button class="btn green" onclick="unlock()">UNLOCK ADMIN</button></div>
+<div id="main" style="display:none">
+<div class="card"><b>Aaj Ki Sale: Rs <span id="sale">0</span></b><br>WhatsApp / Easypaisa: <b>0315-2045030</b></div>
+<div class="card"><h3>➕ Naya Dish Add Karo</h3><input id="ur" placeholder="Urdu Naam - Daal Chana"><input id="en" placeholder="English Naam"><select id="cat"><option value="daal">Daal</option><option value="murgh">Murgh</option><option value="karahi">Karahi</option><option value="roti">Roti</option><option value="drink">Drinks</option></select><input id="price" type="number" placeholder="Price - 150"><button class="btn green" onclick="addDish()">ADD DISH</button></div>
+<div class="card"><h3>📋 Sab Dishes - Price Change</h3><div id="list"></div><button class="btn gold" onclick="saveAll()">SAVE ALL PRICES</button></div>
+<div class="card"><h3>🗑️ Sab Orders Clear Karo (Din Khatam)</h3><button class="btn dark" onclick="clearOrders()">CLEAR ALL ORDERS</button></div>
+<button class="btn dark" onclick="logout()">Logout</button>
+</div>
+<script>
+var menu=[
+{id:1,cat:'daal',ur:'دال چنا',en:'Daal Chana',single:150},{id:2,cat:'daal',ur:'دال ماش',en:'Daal Mash',single:150},{id:3,cat:'daal',ur:'دال لوبیا',en:'Daal Lobia',single:150},{id:4,cat:'daal',ur:'دال چاول',en:'Daal Chawal',single:150},{id:5,cat:'daal',ur:'آلو پالک',en:'Aloo Palak',single:150},{id:6,cat:'daal',ur:'آلو گوبھی',en:'Aloo Gobi',single:150},{id:7,cat:'murgh',ur:'چکن قورمہ',en:'Chicken Qorma',single:200},{id:8,cat:'murgh',ur:'مرغ چنے',en:'Murgh Channay',single:200},{id:9,cat:'murgh',ur:'چکن پالک',en:'Chicken Palak',single:200},{id:10,cat:'murgh',ur:'حلیم',en:'Haleem',single:200},{id:11,cat:'murgh',ur:'چکن حلیم',en:'Chicken Haleem',single:200},{id:12,cat:'karahi',ur:'چکن کڑاہی',en:'Chicken Karahi',single:1000},{id:13,cat:'karahi',ur:'ریڈ کڑاہی',en:'Red Karahi',single:1000},{id:14,cat:'karahi',ur:'وائٹ کڑاہی',en:'White Karahi',single:1200},{id:15,cat:'karahi',ur:'مٹن کڑاہی',en:'Mutton Karahi',single:2000},{id:16,cat:'roti',ur:'روٹی',en:'Roti',single:25},{id:17,cat:'roti',ur:'نان',en:'Naan',single:30},{id:18,cat:'drink',ur:'چائے کٹ',en:'Chai Cut',single:50},{id:19,cat:'drink',ur:'چائے فل',en:'Chai Full',single:70},{id:20,cat:'drink',ur:'کولڈ ڈرنک 1 لیٹر',en:'Cold Drink 1L',single:170},{id:21,cat:'drink',ur:'کولڈ ڈرنک 1.5 لیٹر',en:'Cold Drink 1.5L',single:210}
+];
+try{var s=JSON.parse(localStorage.getItem('s_menu')||'null'); if(s&&s.length>5) menu=s;}catch(e){}
+function unlock(){ if(document.getElementById('pin').value.trim()==="@bilal786.08"){ document.getElementById('lock').style.display='none'; document.getElementById('main').style.display='block'; render(); } else alert('Ghalat PIN!'); }
+function logout(){ document.getElementById('lock').style.display='block'; document.getElementById('main').style.display='none'; }
+function render(){ var h=''; for(var i=0;i<menu.length;i++){ h+='<div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #eee"><div><b>'+menu[i].ur+' ('+menu[i].en+')</b><br>Price: <input style="width:80px;padding:6px" id="p'+menu[i].id+'" value="'+menu[i].single+'" type="number"></div><button style="background:#e74c3c;color:#fff;border:none;padding:8px;border-radius:8px" onclick="delDish('+menu[i].id+')">Delete</button></div>'; } document.getElementById('list').innerHTML=h; var o=[]; try{ o=JSON.parse(localStorage.getItem('s_orders')||'[]'); }catch(e){} var tot=0; for(var j=0;j<o.length;j++) tot+=o[j].total; document.getElementById('sale').innerText=tot; }
+function addDish(){ var ur=document.getElementById('ur').value,en=document.getElementById('en').value,cat=document.getElementById('cat').value,p=document.getElementById('price').value; if(!ur||!en||!p){ alert('Naam aur Price likho'); return; } menu.push({id:Date.now(),cat:cat,ur:ur,en:en,single:parseInt(p)}); localStorage.setItem('s_menu',JSON.stringify(menu)); render(); alert('Dish Add Ho Gaya! Ab Customer wali file mein bhi aa jayega.'); }
+function delDish(id){ menu=menu.filter(function(m){return m.id!==id}); localStorage.setItem('s_menu',JSON.stringify(menu)); render(); }
+function saveAll(){ for(var i=0;i<menu.length;i++){ menu[i].single=parseInt(document.getElementById('p'+menu[i].id).value); } localStorage.setItem('s_menu',JSON.stringify(menu)); render(); alert('Prices Save Ho Gayi!'); }
+function clearOrders(){ if(confirm('Sab orders delete kar dun?')){ localStorage.setItem('s_orders','[]'); render(); alert('Clear Ho Gaya'); } }
+</script>
+</body>
+</html>
