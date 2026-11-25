@@ -6,7 +6,7 @@
 <title>Sultanat-e-Mughlia - Menu</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
-body{background:#fff7e6;padding-bottom:120px}
+body{background:#fff7e6;padding-bottom:140px}
 .top{background:#3d0a0a;color:#fff;text-align:center;padding:20px 12px}
 .top h1{color:#d4af37;font-size:32px}
 .top a{display:inline-block;margin:6px 4px;padding:10px 14px;border-radius:20px;text-decoration:none;font-weight:900;font-size:13px}
@@ -24,12 +24,14 @@ body{background:#fff7e6;padding-bottom:120px}
 .food{background:#fff;border:2px solid #eee;border-radius:18px;margin:0 12px 12px;padding:12px;display:flex;gap:12px;align-items:center}
 .food img{width:80px;height:80px;border-radius:16px;object-fit:cover}
 .add{background:#27ae60;color:#fff;border:none;padding:14px 16px;border-radius:25px;font-weight:900;font-size:16px;min-width:95px}
-.cartBar{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:3px solid #d4af37;padding:12px;z-index:20}
-.big{width:100%;padding:16px;border:none;border-radius:14px;font-weight:900;font-size:18px;margin-top:8px}
+/* CART BAR AB THORA UPAR HAI - BUTTON CHUPEGA NAHI */
+.cartBar{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:3px solid #d4af37;padding:12px;padding-bottom:16px;z-index:20;box-shadow:0 -5px 20px rgba(0,0,0,.15)}
+.big{width:100%;padding:17px;border:none;border-radius:14px;font-weight:900;font-size:18px;margin-top:8px}
 .green{background:#27ae60;color:#fff}.gold{background:#d4af37}.dark{background:#333;color:#fff}
-.modal{position:fixed;inset:0;background:rgba(0,0,0,.7);display:none;align-items:flex-end;justify-content:center}
+/* MODAL AB SAB SE UPAR HOGA - CART BAR ISKE PEECHE RAHEGA */
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.7);display:none;align-items:flex-end;justify-content:center;z-index:999}
 .modal.open{display:flex}
-.sheet{background:#fff;width:100%;max-height:88vh;overflow:auto;border-radius:20px 20px 0 0;padding:18px}
+.sheet{background:#fff;width:100%;max-height:92vh;overflow:auto;border-radius:20px 20px 0 0;padding:18px;padding-bottom:30px}
 .row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #eee}
 .q{width:36px;height:36px;border-radius:50%;border:none;background:#eee;font-weight:900;font-size:18px}
 </style>
@@ -70,12 +72,13 @@ body{background:#fff7e6;padding-bottom:120px}
 <button class="big green" onclick="newOrder()">🔄 Naya Order - Wapis Table Par</button>
 </div>
 
-<div class="cartBar" id="cartBar" style="display:none"><b>🛒 Table <span id="cartT">-</span> • <span id="cartC">0</span> Cheezein • Rs <span id="tot">0</span></b><button class="big green" onclick="openCart()">🛒 CART DEKHEIN</button></div>
+<div class="cartBar" id="cartBar" style="display:none"><b>🛒 Table <span id="cartT">-</span> • <span id="cartC">0</span> Cheezein • Rs <span id="tot">0</span></b><button class="big green" onclick="openCart()">🛒 CART DEKHEIN (SEND NOW)</button></div>
 
 <div class="modal" id="cartModal"><div class="sheet"><h2>🛒 Apka Order - Table <span id="cartT2">-</span></h2><div id="cartBox"></div><h3 style="margin:12px 0">Total: Rs <span id="tot2">0</span></h3>
 <p><b>Payment:</b> <select id="paySel" style="padding:10px;border-radius:10px"><option>Cash</option><option>Easypaisa - 0315-2045030</option></select></p>
-<button class="big green" onclick="placeOrder()">✅ HAAN, ORDER PAKA HAI</button>
-<button class="big dark" onclick="closeCart()">Wapis</button></div></div>
+<button class="big green" onclick="placeOrder()">✅ HAAN, ORDER PAKA HAI (SEND NOW)</button>
+<button class="big dark" onclick="closeCart()">Wapis - Aur Add Karna Hai</button>
+</div></div>
 
 <script>
 var pics={daal:'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=200',murgh:'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=200',karahi:'https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=200',roti:'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=200',drink:'https://images.unsplash.com/photo-1571934811356-5cc061b6821f?w=200'};
@@ -109,8 +112,15 @@ function showMenu(){
 }
 function addCart(id){ var it=null; for(var i=0;i<menu.length;i++) if(menu[i].id===id) it=menu[i]; var ex=null; for(var j=0;j<cart.length;j++) if(cart[j].id===id) ex=cart[j]; if(ex) ex.qty++; else cart.push({id:id,name:it.en,ur:it.ur,price:it.single,qty:1}); updateBar(); }
 function updateBar(){ var t=0,c=0; for(var i=0;i<cart.length;i++){ t+=cart[i].price*cart[i].qty; c+=cart[i].qty; } document.getElementById('tot').innerText=t; document.getElementById('cartC').innerText=c; document.getElementById('cartT').innerText=myTable||'-'; document.getElementById('cartBar').style.display=cart.length?'block':'none'; }
-function openCart(){ var t=0; for(var i=0;i<cart.length;i++) t+=cart[i].price*cart[i].qty; document.getElementById('tot2').innerText=t; document.getElementById('cartT2').innerText=myTable; var h=''; for(var j=0;j<cart.length;j++){ h+='<div class="row"><span><b>'+cart[j].ur+'</b> - Rs '+cart[j].price+'</span><span><button class="q" onclick="chg('+j+',-1)">-</button> '+cart[j].qty+' <button class="q" onclick="chg('+j+',1)">+</button></span></div>'; } document.getElementById('cartBox').innerHTML=h||'Cart khali'; document.getElementById('cartModal').classList.add('open'); }
-function closeCart(){ document.getElementById('cartModal').classList.remove('open'); }
+function openCart(){
+  var t=0; for(var i=0;i<cart.length;i++) t+=cart[i].price*cart[i].qty;
+  document.getElementById('tot2').innerText=t; document.getElementById('cartT2').innerText=myTable;
+  var h=''; for(var j=0;j<cart.length;j++){ h+='<div class="row"><span><b>'+cart[j].ur+'</b> - Rs '+cart[j].price+'</span><span><button class="q" onclick="chg('+j+',-1)">-</button> '+cart[j].qty+' <button class="q" onclick="chg('+j+',1)">+</button></span></div>'; }
+  document.getElementById('cartBox').innerHTML=h||'Cart khali';
+  document.getElementById('cartModal').classList.add('open');
+  document.getElementById('cartBar').style.display='none';
+}
+function closeCart(){ document.getElementById('cartModal').classList.remove('open'); updateBar(); }
 function chg(i,d){ cart[i].qty+=d; if(cart[i].qty<=0) cart.splice(i,1); updateBar(); openCart(); if(!cart.length) closeCart(); }
 function placeOrder(){
   if(!cart.length){ alert('Cart khali hai'); return; }
@@ -130,4 +140,4 @@ function newOrder(){ myTable=''; cart=[]; var all=document.querySelectorAll('.tB
 showMenu();
 </script>
 </body>
-  </html>
+                                                                       </html>
