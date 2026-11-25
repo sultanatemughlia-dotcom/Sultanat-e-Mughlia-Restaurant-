@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sultanat-e-Mughlia | 1 Click Order</title>
+<title>Sultanat-e-Mughlia | FIXED - Table Ab Khulega</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif;-webkit-tap-highlight-color:transparent}
 body{background:#fff7e6;padding-bottom:120px}
@@ -17,19 +17,19 @@ body{background:#fff7e6;padding-bottom:120px}
 .step.active{background:#27ae60;color:#fff}.step.done{background:#d4af37;color:#000}
 .helpBox{background:#fff3cd;border:2px dashed #f39c12;margin:0 12px 12px;padding:14px;border-radius:14px;text-align:center;font-size:16px;line-height:1.6}
 .tableGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:0 12px}
-.tBtn{height:85px;border-radius:50%;border:4px solid #ddd;background:#fff;font-size:22px;font-weight:900;cursor:pointer;touch-action:manipulation}
-.tBtn:active{transform:scale(0.92);background:#d4af37}
-.tBtn.selected{background:#27ae60!important;color:#fff!important;border-color:#000!important;transform:scale(1.12);box-shadow:0 0 20px #27ae60}
+/* TABLE AB DIV HAI - BUTTON NAHI - ISLIYE MOBILE PAR PAKKA DABEGA */
+.tBox{height:85px;border-radius:50%;border:4px solid #ddd;background:#fff;font-size:22px;font-weight:900;cursor:pointer;display:flex;flex-direction:column;justify-content:center;align-items:center;touch-action:manipulation;user-select:none}
+.tBox:active{transform:scale(0.92);background:#ffe9a8}
+.tBox.selected{background:#27ae60!important;color:#fff!important;border-color:#000!important;transform:scale(1.12);box-shadow:0 0 20px #27ae60}
+.tBox span{font-size:11px;font-weight:700}
 .catRow{display:flex;gap:8px;overflow-x:auto;padding:12px}
 .catRow button{padding:13px 20px;border-radius:25px;border:2px solid #d4af37;background:#fff;font-weight:900;white-space:nowrap;cursor:pointer;font-size:15px}
 .catRow button.active{background:#3d0a0a;color:#fff}
 .food{background:#fff;border:2px solid #eee;border-radius:18px;margin:0 12px 12px;padding:12px;display:flex;gap:12px;align-items:center}
 .food img{width:80px;height:80px;border-radius:16px;object-fit:cover}
-.addBtn{background:#27ae60;color:#fff;border:none;padding:15px 18px;border-radius:25px;font-weight:900;font-size:17px;cursor:pointer;min-width:100px;touch-action:manipulation}
-.addBtn:active{transform:scale(0.9)}
+.addBtn{background:#27ae60;color:#fff;border:none;padding:15px 18px;border-radius:25px;font-weight:900;font-size:17px;cursor:pointer;min-width:100px}
 .cartBar{position:fixed;bottom:72px;left:0;right:0;background:#fff;border-top:3px solid #d4af37;padding:12px;z-index:20}
-.bigBtn{width:100%;padding:17px;border:none;border-radius:14px;font-weight:900;font-size:18px;cursor:pointer;margin-top:8px;touch-action:manipulation}
-.bigBtn:active{transform:scale(0.97)}
+.bigBtn{width:100%;padding:17px;border:none;border-radius:14px;font-weight:900;font-size:18px;cursor:pointer;margin-top:8px}
 .green{background:#27ae60;color:#fff}.gold{background:#d4af37}.red{background:#e74c3c;color:#fff}.dark{background:#333;color:#fff}
 .modal{position:fixed;inset:0;background:rgba(0,0,0,.7);display:none;align-items:flex-end;justify-content:center;z-index:99}
 .modal.open{display:flex}
@@ -69,17 +69,18 @@ input,select{width:100%;padding:12px;margin:6px 0;border:1px solid #ccc;border-r
 <div class="helpBox" id="guideBox">👋 <b>Apni Table Dabao - Bas!</b><br>T5 par bethe ho to <b>T5 dabao</b>, khana khud khul jayega.</div>
 
 <div id="step1">
+<!-- AB TABLE DIV HAI, BUTTON NAHI - POORA GOL DABBA DABEGA -->
 <div class="tableGrid">
-<button type="button" class="tBtn" onclick="selectTable('T1',this)">T1<div style="font-size:11px">Khali</div></button>
-<button type="button" class="tBtn" onclick="selectTable('T2',this)">T2<div style="font-size:11px">Khali</div></button>
-<button type="button" class="tBtn" onclick="selectTable('T3',this)">T3<div style="font-size:11px">Khali</div></button>
-<button type="button" class="tBtn" onclick="selectTable('T4',this)">T4<div style="font-size:11px">Khali</div></button>
-<button type="button" class="tBtn" onclick="selectTable('T5',this)">T5<div style="font-size:11px">Khali</div></button>
-<button type="button" class="tBtn" onclick="selectTable('T6',this)">T6<div style="font-size:11px">Khali</div></button>
-<button type="button" class="tBtn" onclick="selectTable('T7',this)">T7<div style="font-size:11px">Khali</div></button>
-<button type="button" class="tBtn" onclick="selectTable('T8',this)">T8<div style="font-size:11px">Khali</div></button>
+<div class="tBox" onclick="selectTable('T1',this)">T1<span>Khali</span></div>
+<div class="tBox" onclick="selectTable('T2',this)">T2<span>Khali</span></div>
+<div class="tBox" onclick="selectTable('T3',this)">T3<span>Khali</span></div>
+<div class="tBox" onclick="selectTable('T4',this)">T4<span>Khali</span></div>
+<div class="tBox" onclick="selectTable('T5',this)">T5<span>Khali</span></div>
+<div class="tBox" onclick="selectTable('T6',this)">T6<span>Khali</span></div>
+<div class="tBox" onclick="selectTable('T7',this)">T7<span>Khali</span></div>
+<div class="tBox" onclick="selectTable('T8',this)">T8<span>Khali</span></div>
 </div>
-<p style="text-align:center;color:#666;font-size:13px;margin-top:10px">Table dabate hi khana khul jayega - Aagay wala button dabane ki zaroorat nahi</p>
+<p style="text-align:center;color:#666;font-size:13px;margin-top:10px">T5 dabate hi khana khul jayega</p>
 </div>
 
 <div id="step2" style="display:none">
@@ -93,7 +94,7 @@ input,select{width:100%;padding:12px;margin:6px 0;border:1px solid #ccc;border-r
 <button onclick="filterMenu('drink',this)">🥤 Drinks</button>
 </div>
 <div id="menuList"></div>
-<button class="bigBtn dark" onclick="goStep1()">⬅️ Table Badalni Hai - T5 Nahi Hai?</button>
+<button class="bigBtn dark" onclick="goStep1()">⬅️ Table Badalni Hai?</button>
 </div>
 
 <div id="step3" style="display:none;text-align:center;padding:0 12px">
@@ -102,7 +103,7 @@ input,select{width:100%;padding:12px;margin:6px 0;border:1px solid #ccc;border-r
 <p style="margin:10px 0;line-height:1.6">Apka order <b>Kitchen</b> mein chala gaya hai.<br>Waiter <b id="doneTable"></b> par khana le kar aa raha hai.<br><span style="color:#27ae60;font-weight:900">Order SAVE ho gaya hai.</span></p>
 <div style="background:#e8f5e9;padding:14px;border-radius:14px;text-align:left;margin:10px 0"><b>💳 Payment:</b><br>- Cash de sakte hain - Table par<br>- Easypaisa: <b>0315-2045030</b> - <button onclick="copyEasy()" style="padding:6px 10px;border-radius:10px;border:none;background:#d4af37;font-weight:bold;cursor:pointer">Copy</button></div>
 <a href="https://wa.me/923152045030" target="_blank" style="display:block;background:#25D366;color:#fff;padding:14px;border-radius:12px;text-decoration:none;font-weight:900">💬 WhatsApp Par Bhejo</a>
-<button class="bigBtn green" onclick="newOrder()">🔄 Naya Order Karna Hai - Wapis Table Par</button>
+<button class="bigBtn green" onclick="newOrder()">🔄 Naya Order - Wapis Table Par</button>
 <button class="bigBtn gold" onclick="callWaiter()">🔔 Waiter Ko Bulana Hai</button>
 </div>
 </div>
@@ -163,17 +164,14 @@ function save(){ try{localStorage.setItem('s_menu',JSON.stringify(menu));localSt
 function copyEasy(){ if(navigator.clipboard){ navigator.clipboard.writeText(WA_NUM).then(()=>alert('✅ Copy Ho Gaya: '+WA_NUM)); } else alert('Easypaisa: '+WA_NUM); }
 function setPay(m){ payMethod=m; document.getElementById('payCash').classList.toggle('active',m=='Cash'); document.getElementById('payEasy').classList.toggle('active',m=='Easypaisa'); document.getElementById('easyInfo').style.display=m=='Easypaisa'?'block':'none'; let t=cart.reduce((a,b)=>a+b.price*b.qty,0); document.getElementById('easyAmount').innerText=t; }
 function showPage(p,btn){ document.querySelectorAll('.page').forEach(x=>x.classList.remove('active')); document.getElementById('page-'+p).classList.add('active'); document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active')); if(btn) btn.classList.add('active'); window.scrollTo(0,0); renderAll(); }
-
-// *** YAHI NAYA FIX HAI - T5 DABAO, KHUD HI AGAY JAYEGA ***
-function selectTable(id,btn){
+function selectTable(id,el){
   selectedTable=id;
-  document.querySelectorAll('.tBtn').forEach(b=>b.classList.remove('selected'));
-  if(btn) btn.classList.add('selected');
+  document.querySelectorAll('.tBox').forEach(b=>b.classList.remove('selected'));
+  if(el) el.classList.add('selected');
   if(navigator.vibrate) navigator.vibrate(50);
   document.getElementById('guideBox').innerHTML='✅ <b>Table '+id+' Select Ho Gayi!</b><br>Khana khul raha hai...';
   document.getElementById('showTable2').innerText=id;
-  // 400ms baad khud hi agla step khol do - customer ko dobara button dabane ki zaroorat nahi
-  setTimeout(function(){ goStep2(); }, 400);
+  setTimeout(function(){ goStep2(); }, 350);
 }
 function goStep2(){
   if(!selectedTable){ alert('Pehle Table Dabao!'); return; }
@@ -198,4 +196,6 @@ function filterMenu(c,btn){ current=c; document.querySelectorAll('.catRow button
 function renderMenu(){ let html=''; menu.filter(i=>current=='all'||i.cat==current).forEach(i=>{ html+=`<div class="food"><img src="${pics[i.cat]}"><div style="flex:1"><b>${i.ur} (${i.en})</b><br><span>Single Rs ${i.single} | Full Rs ${i.full}</span><br><span style="color:#8b0000;font-weight:900">Rs ${i.single} se shuru</span></div><button type="button" class="addBtn" onclick="addCart(${i.id},${i.single},'Single')">ADD +<br><span style="font-size:11px">Rs ${i.single}</span></button></div>` }); document.getElementById('menuList').innerHTML=html; }
 function addCart(id,price,size){ let it=menu.find(x=>x.id==id); let ex=cart.find(c=>c.id==id&&c.size==size); if(ex)ex.qty++; else cart.push({id,name:it.en,ur:it.ur,price,size,qty:1}); updateCartBar(); if(navigator.vibrate) navigator.vibrate(30); document.getElementById('guideBox').innerHTML='✅ <b>'+it.ur+' Add Ho Gaya!</b><br>Neeche <b>CART DEKHEIN</b> dabao.'; }
 function updateCartBar(){ let total=cart.reduce((a,b)=>a+b.price*b.qty,0); let count=cart.reduce((a,b)=>a+b.qty,0); document.getElementById('total').innerText=total; document.getElementById('cartCount').innerText=count; document.getElementById('cartTable').innerText=selectedTable||'-'; document.getElementById('cartBar').style.display=cart.length?'block':'none'; }
-function openCart(){ let total=cart.reduce((a,b)=>a+b.price*b.qty,0); document.getElementById('total2').innerText=total; document.getElementById('easyAmount').innerText=total; document.getElementById('cartTable2').innerText=selectedTable; document.getElementById('cartBox').innerHTML=cart.length?cart.map((c,i)=>`<div class="cartRow"><span><b>${c.ur} (${c.name})</b><br>${c.size} - Rs ${c.price}</s
+function openCart(){ let total=cart.reduce((a,b)=>a+b.price*b.qty,0); document.getElementById('total2').innerText=total; document.getElementById('easyAmount').innerText=total; document.getElementById('cartTable2').innerText=selectedTable; document.getElementById('cartBox').innerHTML=cart.length?cart.map((c,i)=>`<div class="cartRow"><span><b>${c.ur} (${c.name})</b><br>${c.size} - Rs ${c.price}</span><span><button class="qBtn" onclick="changeQty(${i},-1)">-</button> ${c.qty} <button class="qBtn" onclick="changeQty(${i},1)">+</button></span></div>`).join(''):'<p>Cart khali hai.</p>'; document.getElementById('cartModal').classList.add('open'); }
+function closeCart(){ document.getElementById('cartModal').classList.remove('open'); }
+function changeQty(i,d){ cart[i].qty+=d; if(cart[i].qty<=0)cart.
